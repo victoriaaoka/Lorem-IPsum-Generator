@@ -1,33 +1,23 @@
 const fs = require('fs');
 
-function generateWords(count, value, fileContents){
-	const wordsList = value.slice(0, count);
-	while(wordsList.length < count){
-		let word = wordsList[Math.floor(Math.random()*wordsList.length)];
-		wordsList.push(word);
+function generator(count, value, char){
+	const theItemsArray = value.slice(0, count);
+	while(theItemsArray.length < count){
+		let newItem = theItemsArray[Math.floor(Math.random()*theItemsArray.length)];
+		theItemsArray.push(newItem);
 	}
-	const result = wordsList.join().replace(/,/g, '');
+	const result = theItemsArray.join(char);
+	return result;
+}
+
+function generateWords(count, value, fileContents){
+	const result = generator(count, value, '').replace(/,/g, '');
 	return fileContents.replace('{{Lipsum content}}', result);
 }
 
-function generateSentences(count, value, fileContents){
-	const result = value.slice(0, count);
-	while(result.length < count){
-		let sentence= result[Math.floor(Math.random()*result.length)];
-		result.push(sentence);
-	}
-	const content = fileContents.replace('{{Lipsum content}}', result.join('<br><br>'));
-	return content;
-}
-
-function generateParagraphs(count, value, fileContents){
-	const result = value.slice(0, count);
-	while(result.length < count){
-		let paragragh = result[Math.floor(Math.random()*result.length)];
-		result.push(paragragh);
-	}
-	const content = fileContents.replace('{{Lipsum content}}', result.join('<br><br>'));
-	return content;
+function generateBlock(count, value, fileContents){
+	const result = generator(count, value, '<br><br>');
+	return fileContents.replace('{{Lipsum content}}', result);
 };
 
 function view(templateName, values, request, response){
@@ -35,6 +25,5 @@ function view(templateName, values, request, response){
 	response.write(fileContents);
 }
 module.exports.view = view;
-module.exports.generateSentences = generateSentences;
 module.exports.generateWords = generateWords;
-module.exports.generateParagraphs = generateParagraphs;
+module.exports.generateBlock = generateBlock;
