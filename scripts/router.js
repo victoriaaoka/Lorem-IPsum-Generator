@@ -33,11 +33,9 @@ function homeRoute(request, response){
 					if (formData.contenttype=== 'words') {
 						fileContents = renderer.generateWords(count, loremIpsum.words, fileContents);
 					}
-					if (formData.contenttype === 'sentences') {
-						fileContents = renderer.generateSentences(count, loremIpsum.sentences, fileContents);
-					}
-					if (formData.contenttype === 'paragraphs') {
-						fileContents = renderer.generateParagraphs(count, loremIpsum.paragraphs, fileContents);
+					if (formData.contenttype === 'sentences' || formData.contenttype === 'paragraphs') {
+						let theList = formData.contenttype;
+						fileContents = renderer.generateBlock(count, loremIpsum[theList], fileContents);
 					}
 				}
 				response.writeHead(200, { 'content-Type': 'text/html' });
