@@ -1,4 +1,4 @@
-const words = [' Lorem ', 'ipsum ', 'dolor ', 'sit ', 'amet, ', 'consetetur', ' sadipscing ', 'elitr', 'sed', 'diam',
+const words = ['Lorem ', 'ipsum ', 'dolor ', 'sit ', 'amet, ', 'consetetur', ' sadipscing ', 'elitr', 'sed', 'diam',
 	' nonumy', ' eirmod ', 'tempor', ' invidunt', ' ut ', 'labore', ' et ', 'dolore', ' magna', ' aliquyam',
 	' erat, ', 'sed ', 'diam', ' voluptua', ' At', ' vero ', 'eos', ' et ', 'accusam ', 'et', ' justo ', 'duo',
 	' dolores', ' et ', 'ea', ' rebum ', 'Stet', ' clita ', 'kasd', ' gubergren, ', 'no', ' sea', ' takimata',
@@ -21,11 +21,8 @@ const paragraphs = ['Lorem ipsum dolor sit amet, consectetuer adipiscing elit. D
 					'Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.', 
 					'Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.'];
 
-
-module.exports.words = words;
-module.exports.sentences = sentences;
-module.exports.paragraphs = paragraphs;
-
+const lipsumObject = {words, sentences, paragraphs}
+module.exports = lipsumObject;
 
 
 
